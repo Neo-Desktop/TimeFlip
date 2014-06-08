@@ -1,0 +1,21 @@
+{
+   "app": {
+      "launch": {
+         "local_path": "index.html"
+      }
+   },
+   "description": "Time Flip is a beautiful widget style web-app - drawing an analogue-style flip clock, not unlike that found on HTC phones.",
+   "version": "1.4.0",
+   "original_developer": "Andie Fairlie",
+   "maintainer": "Amrit Panesar",
+   "icons": {
+      "128": "icon_128.png",
+      "16": "icon_16.png"
+   },
+   "name": "Time Flip",
+   "omnibox": {
+      "keyword": "clock"
+   },
+   "options_page": "options.html",
+   "update_url": "http://clients2.google.com/service/update2/crx"
+}

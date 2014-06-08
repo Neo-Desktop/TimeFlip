@@ -1,0 +1,139 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+	<head> 
+		<link href="style.css" rel="stylesheet" type="text/css" /> 
+		<link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script src="timer.js"></script>
+		<title>Time Flip</title>
+		<script type="text/javascript">
+
+			var use24;
+		
+			function flipTime() {
+				var date = new Date();
+				var hour = date.getHours();
+				var mins = date.getMinutes();
+				var sec = date.getSeconds();
+				var day = date.getDate();
+				var month = date.getMonth();
+				month++;
+				var year = date.getFullYear();
+				var toddy = "";
+				
+				
+				if(window.localStorage.getItem("use24") == "false"){
+					// work out am or pm
+					if(hour>11){
+						if(hour!=12){
+							hour = hour-12; // make it 12 hour format
+						}
+						toddy = "PM";
+					} else {
+						toddy = "AM";
+					}
+					document.getElementById('tod').innerHTML = toddy;	
+					
+				}
+				
+				if(hour<10){ hour = "0"+hour; }
+				if(mins<10){ mins = "0"+mins; }
+				if(sec<10){ sec = "0"+sec; }
+				
+				if(day<10){
+					day = "0"+day;
+				}
+				if(month<10){
+					month = "0"+month;
+				}
+							
+				document.getElementById('date').innerHTML = day + "/" + month + "/" + year;
+				document.getElementById('hour').innerHTML = hour;
+				document.getElementById('min').innerHTML = mins;
+				document.getElementById('sec').innerHTML = sec;
+				
+				document.title = hour +":"+ mins +":"+ sec +" "+ toddy + " -- " + day + "/" + month + "/" + year;
+				pause=setTimeout('flipTime()',1000);
+			}
+			
+
+		function restore_options() {
+		
+			if(window.localStorage.getItem("color")){
+				document.getElementById('background').style.background = window.localStorage.getItem("color");
+			} else {
+				document.getElementById('background').style.background="#69077e";
+			}
+			
+			if(window.localStorage.getItem("disableSeconds") == "true")
+			{
+				document.getElementById('seconds').style.display = "none";
+				document.getElementById('box').style.width = "490px";
+				document.getElementById('box').style.marginLeft = "-245px";
+				document.getElementById('flipMin').style.marginRight = "0px";
+			} 
+			
+			if(window.localStorage.getItem("use24") == "true"){
+				document.getElementById('tod').style.display = "none";
+			}
+		}
+
+		(function($){
+		$.idleTimer(2000);
+		$(document).bind("idle.idleTimer", function(){
+			$('#status').fadeOut('slow');
+		});
+		 
+		$(document).bind("active.idleTimer", function(){
+			$('#status').fadeIn('slow');
+		});
+		 
+	 
+		 })(jQuery);
+		</script>
+		
+	</head> 
+	<body onload="restore_options(); flipTime();"> 
+	
+		
+		<div id="bokeh">
+			<div id="background"></div>
+			<div id="container"></div>
+		</div>
+		
+		
+		<div id="canvas">
+			<div id="box">
+				<div id="face">
+					<div class="flip" id="flipHr">
+						<div class="topPortion"></div>
+						<div class="bottomPortion"></div>
+						<span class="time" id="hour"></span>
+						<span id="tod">AM</span>
+					</div>
+					
+					<div class="flip" id="flipMin">
+						<div class="topPortion"></div>
+						<div class="bottomPortion"></div>
+						<span class="time" id="min"></span>
+					</div>
+					
+					<div class="flip" id="seconds">
+						<div class="topPortion"></div>
+						<div class="bottomPortion"></div>
+						<span class="time" id="sec"></span>
+					</div>
+					
+					<div id="lower">
+						<div id="date"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="status">
+			<div id="options"><a href="options.html">Configure Time Flip</a></div>
+		</div>
+		
+	</body> 
+</html> 

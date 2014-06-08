@@ -1,0 +1,112 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+	<head> 
+		<link href="styleOptions.css" rel="stylesheet" type="text/css" /> 
+		<title>Time Flip - Options</title>
+		
+		
+		<script type="text/javascript">
+
+		
+		// Saves options to localStorage.
+		function save_options() {
+		
+		  if( document.getElementById("use24").checked == true ) {
+				window.localStorage.setItem("use24","true");
+		  } else {
+				window.localStorage.setItem("use24","false");
+		  }
+		  
+		  if( document.getElementById("disableSeconds").checked == true ) {
+				window.localStorage.setItem("disableSeconds","true");
+		  } else {
+				window.localStorage.setItem("disableSeconds","false");
+		  }
+		  
+		  var select = document.getElementById("color");
+		  var colorSelect = select.children[select.selectedIndex].value;
+		  window.localStorage.setItem("color", colorSelect);
+
+		  /*
+		  var disSec = document.getElementById("disableSeconds");
+		  var disSecVal = disSec.value;
+		  localStorage["disableSeconds"] = disSecVal;
+		  
+		  var use24box = document.getElementById("use24");
+		  var use24boxVal = use24box.value;
+		  localStorage["use24"] = use24boxVal;
+		  
+		  localStorage["disableSeconds"] = document.getElementById("disableSeconds").value;
+		  localStorage["use24"] = document.getElementById("use24").value;
+		  */
+
+		  // Update status to let user know options were saved.
+		  window.location = "index.html";
+		}
+
+		
+		
+		// Restores select box state to saved value from localStorage.
+		function restore_options() {
+			if(window.localStorage.getItem("disableSeconds") == "true") {
+				document.getElementById("disableSeconds").checked = true;
+			} else {
+				document.getElementById("disableSeconds").checked = false;
+			}			
+			
+			if(window.localStorage.getItem("use24") == "true") {
+				document.getElementById("use24").checked = true;
+			} else {
+				document.getElementById("use24").checked = false;
+			}
+			
+			if (window.localStorage.getItem("color")) {
+				var select = document.getElementById("color");	
+				for (var i = 0; i < select.children.length; i++) {
+					var child = select.children[i];
+					if (child.value == window.localStorage.getItem("color")) {
+						child.selected = "true";
+						break;
+					}
+				}
+			}
+		}
+
+		</script>
+		
+	</head> 
+	<body onload="restore_options()"> 
+		<div id="canvas">
+			<h1>Time Flip</h2>
+			<h2>- A free web app from TN2D Web Design -</h2>
+						
+			<div id="panel">
+				<div class="opt">
+					<label>Background color:</label>
+					<select id="color">
+						<option value="#69077e">dark purple</option>
+						<option value="#ff2fae">hot pink</option>
+						<option value="#2f8cff">blue</option>
+						<option value="#800000">red</option>
+						<option value="#ffd672">yellow</option>
+						<option value="#ff6000">orange</option>
+						<option value="#009da0">teal</option>
+					</select>
+				</div>
+				<div class="opt">
+					<label>Disable seconds?</label>
+					<input type="checkbox" name="disableSeconds" id="disableSeconds">
+				</div>
+				<div class="opt">
+					<label>Use 24 hour format?</label>
+					<input type="checkbox" name="use24" id="use24">
+				</div>
+				<div style="text-align:center"><button onclick="save_options()">Save Options</button></div>
+				
+				<h3>Recent Changes</h3>
+				<p>Under new management by <a href="mailto:thepureamrit@gmail.com">Amrit Panesar</a></p>
+				
+			</div>
+		</div>
+	</body> 
+</html> 

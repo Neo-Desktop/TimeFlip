@@ -1,0 +1,146 @@
+/* Resets */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+:focus {
+	outline: 0;
+}
+body {
+	line-height: 1;
+	color: black;
+	background: white;
+}
+ol, ul {
+	list-style: none;
+}
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+}
+blockquote, q {
+	quotes: "" "";
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	text-align: center;
+	font-family: "Droid Sans", Arial, Sans-Serif;
+	color: #333;
+	background:  -webkit-gradient(
+					linear,
+					left bottom,
+					left top, 
+					color-stop(0, rgba(0,0,0,1)),
+					color-stop(1, rgba(0,0,0,0.7))  
+				);
+	overflow: hidden;
+}
+
+	#canvas {
+		width: 600px;
+		margin: 0 auto;
+		margin-top: 100px;
+	}
+	
+		#canvas h1 {
+			display: block;
+			width: 500px;
+			text-indent: -99999em;
+			margin: 0 auto;
+			
+			background: url('logo.png') no-repeat;
+			height: 150px;
+		}
+		
+		#canvas h2 {
+			color: #fff;
+			font-style: italic;
+			font-family: "Times New Roman", Serif;
+			font-size: 26px;
+			text-shadow: #000 0px 0px 5px;
+		}
+		
+		#panel {
+			background: #fff;
+			-webkit-box-shadow:#000 0px 0px 70px;
+			border-radius: 3px;
+			text-align: left;
+			color: #333;
+			padding: 20px;
+			margin-top: 60px;
+		}
+		
+		#status {
+			margin-top: 60px;
+			color: #95ebda;
+			font-size: 28px; 
+			font-weight: bold;
+		}
+		
+		label {
+			font-weight: bold;
+			font-size: 18px;
+			display: block;
+			margin-bottom: 5px;
+			width: 300px;
+			float: left;
+		}
+		
+		select {
+			display: block;
+			font-size: 18px;
+		}
+		
+		button {
+			margin: 0 auto;
+			font-size: 18px;
+
+		}	
+		
+		.opt {
+			margin-bottom: 20px;
+		}
+		
+		.note {
+			font-size: 12px;
+			display: block;
+			margin-top: 5px;
+			color: #ccc;
+		}
+		
+		h3 {
+			margin-top: 30px;
+			font-weight: bold;
+			margin-bottom: 5px;
+			font-size: 12px;
+		}
+		
+		p {
+			font-size: 12px;
+		}
